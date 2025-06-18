@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Comparison Tool - Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+        .button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Excel Comparison Tool</h1>
+            <p>Asset Management Data Comparison Application</p>
+        </div>
+
+        <div class="status success">
+            <strong>✅ Build Successful!</strong> The application has been built successfully.
+        </div>
+
+        <div class="status info">
+            <strong>📁 Files Generated:</strong> Check the 'dist' folder for the built application files.
+        </div>
+
+        <h2>Quick Start Options:</h2>
+        
+        <div style="text-align: center; margin: 20px 0;">
+            <a href="dist/index.html" class="button" target="_blank">
+                🚀 Open Built Application
+            </a>
+            
+            <a href="sample-data/old-data.csv" class="button" download>
+                📄 Download Sample Old Data
+            </a>
+            
+            <a href="sample-data/new-data.csv" class="button" download>
+                📄 Download Sample New Data
+            </a>
+        </div>
+
+        <h3>How to Test:</h3>
+        <ol>
+            <li>Click "Open Built Application" to launch the tool</li>
+            <li>Download the sample CSV files</li>
+            <li>Upload the old-data.csv as "Old Excel Data"</li>
+            <li>Upload the new-data.csv as "New Excel Data"</li>
+            <li>Click "Compare Data" to see the results</li>
+        </ol>
+
+        <h3>Expected Results:</h3>
+        <ul>
+            <li><strong>Added:</strong> 2 records (Server-004, Workstation-003)</li>
+            <li><strong>Modified:</strong> 1 record (Server-002 IP changed from 192.168.1.101 to 192.168.1.105)</li>
+            <li><strong>Unchanged:</strong> 9 records</li>
+            <li><strong>Removed:</strong> 0 records</li>
+        </ul>
+
+        <div class="status info">
+            <strong>💡 Tip:</strong> You can also run <code>npm run dev</code> for development mode with hot reloading.
+        </div>
+    </div>
+</body>
+</html> 

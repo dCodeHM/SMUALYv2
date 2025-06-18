@@ -1,0 +1,37 @@
+{
+  "name": "excel-comparison-tool",
+  "version": "1.0.0",
+  "description": "A web application to compare Excel data between old and new datasets",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "xlsx": "^0.18.5",
+    "react-dropzone": "^14.2.3",
+    "lucide-react": "^0.294.0",
+    "tailwindcss": "^3.3.6",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.32"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "@vitejs/plugin-react": "^4.1.1",
+    "vite": "^4.5.0"
+  },
+  "keywords": [
+    "excel",
+    "comparison",
+    "data-analysis",
+    "react",
+    "web-app"
+  ],
+  "author": "Excel Comparison Tool",
+  "license": "MIT"
+} 
