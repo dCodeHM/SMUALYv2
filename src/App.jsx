@@ -421,6 +421,7 @@ function App() {
   return (
     <div className="min-h-screen">
       <Header />
+<<<<<<< HEAD
       <div className="relative container mx-auto py-12">
         {/* Playful accent shape in background */}
         <div className="absolute -z-10 right-0 top-0 w-64 h-64 bg-gradient-to-br from-pink-50 via-accent-50 to-teal-50 rounded-full opacity-20 pointer-events-none"></div>
@@ -488,6 +489,71 @@ function App() {
             <ComparisonResults results={comparisonResults} />
           )}
         </div>
+=======
+      <div className="container mx-auto py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+          <FileUpload
+            title="Old Data File"
+            description="Upload the previous (old) Excel or CSV file."
+            onFileUpload={file => {
+              setOldData(file ? { ...file, rawRows: file.rawRows || file.raw || [] } : null)
+              setComparisonResults(null)
+            }}
+            uploadedFile={oldData}
+            icon={<FileSpreadsheet className="w-6 h-6 text-primary-600" />}
+          />
+          <FileUpload
+            title="New Data File"
+            description="Upload the latest (new) Excel or CSV file."
+            onFileUpload={file => setNewData(file)}
+            uploadedFile={newData}
+            icon={<FileSpreadsheet className="w-6 h-6 text-primary-600" />}
+          />
+        </div>
+        {/* Export Options Section */}
+        <ExportOptions
+          format={exportFormat}
+          filter={exportFilter}
+          fileName={exportFileName}
+          onFormatChange={setExportFormat}
+          onFilterChange={setExportFilter}
+          onFileNameChange={setExportFileName}
+        />
+        {/* Export Preview Section */}
+        <ExportPreview
+          previewRows={exportPreview}
+          getRowType={getRowType}
+          headers={exportHeaders}
+        />
+        {/* Action Buttons */}
+        <div className="flex gap-4 mb-8">
+          <button
+            className="btn btn-primary text-lg px-6 py-2 rounded shadow hover:bg-primary-700 transition-colors"
+            onClick={compareData}
+            disabled={!oldData || !newData || isLoading}
+            aria-label="Compare old and new data"
+          >
+            Compare Data
+          </button>
+          <button
+            className="btn btn-success text-lg px-6 py-2 rounded shadow hover:bg-success-700 transition-colors"
+            onClick={handleExport}
+            disabled={!oldData || !newData}
+            aria-label="Export compared data"
+          >
+            Export Compared Data
+          </button>
+        </div>
+        {isLoading && (
+          <div className="flex items-center gap-2 text-primary-600 mb-4">
+            <BarChart3 className="w-5 h-5 animate-spin" />
+            <span>Comparing data, please wait...</span>
+          </div>
+        )}
+        {comparisonResults && (
+          <ComparisonResults results={comparisonResults} />
+        )}
+>>>>>>> c359019 (feat: improve importation of data using the old data set to the new excel data.)
       </div>
     </div>
   )
