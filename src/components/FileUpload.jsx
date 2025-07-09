@@ -65,18 +65,34 @@ function FileUpload({ title, description, onFileUpload, uploadedFile, icon }) {
           header && header.toString().toLowerCase().includes('ipv4')
         )
         
-        // Process the data
-        const processedData = jsonData.slice(1).map(row => ({
-          assetName: row[assetNameIndex] || '',
-          hostId: row[hostIdIndex] || '',
-          ipv4Address: row[ipv4Index] || ''
-        })).filter(row => row.assetName || row.hostId || row.ipv4Address)
+        // Only extract the three columns for new data
+        // Use a prop or file name to determine if this is the new file
+        // We'll use a convention: if the file name includes 'new', treat as new data
+        const isNewFile = file.name.toLowerCase().includes('new')
+
+        let processedData
+        if (isNewFile) {
+          processedData = jsonData.slice(1).map(row => ({
+            assetName: row[assetNameIndex] || '',
+            hostId: row[hostIdIndex] || '',
+            ipv4Address: row[ipv4Index] || ''
+          })).filter(row => row.assetName || row.hostId || row.ipv4Address)
+        } else {
+          // For old file, keep all columns for mapping
+          processedData = jsonData.slice(1).map(row => ({
+            assetName: row[assetNameIndex] || '',
+            hostId: row[hostIdIndex] || '',
+            ipv4Address: row[ipv4Index] || '',
+            fullRow: row
+          })).filter(row => row.assetName || row.hostId || row.ipv4Address)
+        }
         
         onFileUpload({
           file,
           data: processedData,
           headers,
-          rowCount: processedData.length
+          rowCount: processedData.length,
+          rawRows: jsonData.slice(1)
         })
         
       } catch (err) {
