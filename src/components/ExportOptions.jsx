@@ -13,8 +13,10 @@ function ExportOptions({ format, filter, fileName, onFormatChange, onFilterChang
         <span className="w-5 h-5 bg-accent-100 rounded-full flex items-center justify-center"><span className="text-accent-600 font-bold">&#9881;</span></span>
         <h2 id="export-options-title" className="text-xl font-extrabold text-accent-700 tracking-tight">Export Options</h2>
       </div>
-      <div className="relative p-6 bg-white rounded-2xl shadow-sm flex flex-col md:flex-row gap-4 items-center border-2 border-accent-100">
-        <div className="flex items-center gap-2">
+      <div className="relative p-6 bg-white rounded-2xl shadow-sm flex flex-col md:flex-row gap-4 items-center border-2 border-accent-100 animate-fade-in">
+        {/* Playful accent shape */}
+        <div className="absolute -left-6 -top-6 w-16 h-16 bg-gradient-to-br from-accent-100 via-pink-50 to-teal-50 rounded-full opacity-10 z-0 pointer-events-none"></div>
+        <div className="flex items-center gap-2 z-10">
           <label htmlFor="export-format" className="font-semibold mr-2 text-accent-700">Export Format</label>
           <select
             id="export-format"
@@ -28,7 +30,7 @@ function ExportOptions({ format, filter, fileName, onFormatChange, onFilterChang
           </select>
           <span className="text-gray-400" title="Choose the file format for export."><Info className="w-4 h-4 inline ml-1" aria-hidden /></span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 z-10">
           <label htmlFor="export-filter" className="font-semibold mr-2 text-accent-700">Filter</label>
           <select
             id="export-filter"
@@ -44,7 +46,7 @@ function ExportOptions({ format, filter, fileName, onFormatChange, onFilterChang
           </select>
           <span className="text-gray-400" title="Filter which rows to include in the export."><Info className="w-4 h-4 inline ml-1" aria-hidden /></span>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 z-10">
           <label htmlFor="export-filename" className="font-semibold mr-2 text-accent-700">File Name</label>
           <input
             id="export-filename"

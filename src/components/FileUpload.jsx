@@ -124,8 +124,9 @@ function FileUpload({ title, description, onFileUpload, uploadedFile, icon }) {
   }
 
   return (
-    <div className="card bg-white border-2 border-accent-100 shadow-sm relative">
-      <div className="flex items-center gap-3 mb-4">
+    <div className="card bg-white border-2 border-accent-100 shadow-sm relative overflow-hidden">
+      <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-accent-100 via-pink-50 to-teal-50 rounded-full opacity-20 z-0 pointer-events-none"></div>
+      <div className="flex items-center gap-3 mb-4 relative z-10">
         {icon}
         <div>
           <h3 className="text-lg font-semibold text-accent-700">{title}</h3>
@@ -136,10 +137,10 @@ function FileUpload({ title, description, onFileUpload, uploadedFile, icon }) {
       {!uploadedFile ? (
         <div
           {...getRootProps()}
-          className={`dropzone ${isDragActive ? 'dropzone-active ring-2 ring-accent-500' : ''}`}
+          className={`dropzone transition-all duration-300 border-2 border-dashed rounded-xl p-8 text-center cursor-pointer bg-white hover:bg-accent-50 focus:bg-accent-50 outline-none focus:ring-2 focus:ring-accent-500 ${isDragActive ? 'dropzone-active ring-2 ring-accent-500' : ''}`}
         >
           <input {...getInputProps()} />
-          <Upload className="w-12 h-12 mx-auto mb-4 text-accent-400" />
+          <Upload className={`w-12 h-12 mx-auto mb-4 text-accent-400`} />
           {isDragActive ? (
             <p className="text-accent-600 font-semibold">Drop the Excel file here...</p>
           ) : (

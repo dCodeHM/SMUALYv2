@@ -42,7 +42,7 @@ function App() {
       const results = performComparison(oldData, newData)
       setComparisonResults(results)
       setIsLoading(false)
-    }, 300)
+    }, 1000)
   }
 
   const performComparison = (oldFile, newFile) => {
@@ -422,6 +422,8 @@ function App() {
     <div className="min-h-screen">
       <Header />
       <div className="relative container mx-auto py-12">
+        {/* Playful accent shape in background */}
+        <div className="absolute -z-10 right-0 top-0 w-64 h-64 bg-gradient-to-br from-pink-50 via-accent-50 to-teal-50 rounded-full opacity-20 pointer-events-none"></div>
         <div className="bg-white rounded-3xl shadow-sm border-2 border-accent-100 p-8 md:p-12">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
             <FileUpload
@@ -460,7 +462,7 @@ function App() {
           {/* Action Buttons */}
           <div className="flex flex-wrap gap-4 mb-10 justify-center">
             <button
-              className="btn-primary text-lg px-8 py-3 rounded-xl shadow-sm hover:bg-accent-600"
+              className="btn-primary text-lg px-8 py-3 rounded-xl shadow-lg hover:scale-105 hover:bg-accent-600 transition-all duration-200"
               onClick={compareData}
               disabled={!oldData || !newData || isLoading}
               aria-label="Compare old and new data"
@@ -468,7 +470,7 @@ function App() {
               Compare Data
             </button>
             <button
-              className="btn-secondary text-lg px-8 py-3 rounded-xl shadow-sm hover:bg-teal-600 hover:text-white"
+              className="btn-secondary text-lg px-8 py-3 rounded-xl shadow-lg hover:scale-105 hover:bg-teal-600 hover:text-white transition-all duration-200"
               onClick={handleExport}
               disabled={!oldData || !newData}
               aria-label="Export compared data"
