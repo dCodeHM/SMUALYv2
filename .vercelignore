@@ -1,0 +1,5 @@
+sample-data/
+*.md
+deploy.bat
+deploy.ps1
+test.html 
