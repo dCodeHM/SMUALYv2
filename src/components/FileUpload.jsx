@@ -124,11 +124,11 @@ function FileUpload({ title, description, onFileUpload, uploadedFile, icon }) {
   }
 
   return (
-    <div className="card">
+    <div className="card bg-white border-2 border-accent-100 shadow-sm relative">
       <div className="flex items-center gap-3 mb-4">
         {icon}
         <div>
-          <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+          <h3 className="text-lg font-semibold text-accent-700">{title}</h3>
           <p className="text-sm text-gray-600">{description}</p>
         </div>
       </div>
@@ -136,16 +136,16 @@ function FileUpload({ title, description, onFileUpload, uploadedFile, icon }) {
       {!uploadedFile ? (
         <div
           {...getRootProps()}
-          className={`dropzone ${isDragActive ? 'dropzone-active' : ''}`}
+          className={`dropzone ${isDragActive ? 'dropzone-active ring-2 ring-accent-500' : ''}`}
         >
           <input {...getInputProps()} />
-          <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
+          <Upload className="w-12 h-12 mx-auto mb-4 text-accent-400" />
           {isDragActive ? (
-            <p className="text-primary-600 font-medium">Drop the Excel file here...</p>
+            <p className="text-accent-600 font-semibold">Drop the Excel file here...</p>
           ) : (
             <div>
               <p className="text-gray-600 mb-2">
-                Drag & drop an Excel file here, or <span className="text-primary-600 font-medium">click to browse</span>
+                Drag & drop an Excel file here, or <span className="text-accent-600 font-semibold">click to browse</span>
               </p>
               <p className="text-xs text-gray-500">
                 Supports .xlsx, .xls, and .csv files
@@ -167,7 +167,7 @@ function FileUpload({ title, description, onFileUpload, uploadedFile, icon }) {
             </div>
             <button
               onClick={removeFile}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-gray-400 hover:text-accent-600 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>

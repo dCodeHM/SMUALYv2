@@ -9,34 +9,34 @@ import { CheckCircle, Info } from 'lucide-react'
 function ExportPreview({ previewRows, getRowType, headers }) {
   // Color legend for row types
   const legend = [
-    { type: 'new', label: 'New', className: 'bg-green-100 text-green-800 border-green-300' },
-    { type: 'changed', label: 'Changed', className: 'bg-yellow-100 text-yellow-800 border-yellow-300' },
+    { type: 'new', label: 'New', className: 'bg-teal-100 text-teal-800 border-teal-300' },
+    { type: 'changed', label: 'Changed', className: 'bg-pink-100 text-pink-800 border-pink-300' },
     { type: 'unchanged', label: 'Unchanged', className: 'bg-gray-100 text-gray-700 border-gray-300' },
   ]
   return (
     <section aria-labelledby="export-preview-title" className="mb-8">
       <div className="mb-2 flex items-center gap-2">
         <CheckCircle className="w-5 h-5 text-success-500" />
-        <h2 id="export-preview-title" className="text-xl font-bold text-success-700">Export Preview</h2>
+        <h2 id="export-preview-title" className="text-xl font-extrabold text-teal-700 tracking-tight">Export Preview</h2>
       </div>
       <div className="flex items-center gap-4 mb-2">
-        <span className="font-medium text-gray-700">Legend:</span>
+        <span className="font-semibold text-gray-700">Legend:</span>
         {legend.map(l => (
-          <span key={l.type} className={`inline-block px-2 py-0.5 rounded text-xs border ${l.className}`}>{l.label}</span>
+          <span key={l.type} className={`inline-block px-3 py-1 rounded-full text-xs border font-semibold shadow-sm ${l.className}`}>{l.label}</span>
         ))}
         <span className="text-gray-400" title="Rows are color-coded by type (new, changed, unchanged)."><Info className="w-4 h-4 inline ml-1" aria-hidden /></span>
       </div>
-      <div className="bg-white rounded-lg shadow p-4 overflow-x-auto">
+      <div className="relative bg-white rounded-2xl shadow-sm p-6 overflow-x-auto border-2 border-teal-100">
         {previewRows.length > 1 ? (
           <>
             <div className="font-medium mb-2 text-gray-700">First 10 rows to be exported:</div>
-            <table className="min-w-full text-xs border rounded-lg overflow-hidden" role="table">
+            <table className="min-w-full text-xs border rounded-xl overflow-hidden shadow-sm bg-white">
               <thead>
                 <tr>
                   {headers.map((h, i) => (
-                    <th key={i} className="border px-2 py-1 bg-gray-100 text-gray-700 font-semibold">{h}</th>
+                    <th key={i} className="border px-3 py-2 bg-gray-100 text-gray-700 font-semibold">{h}</th>
                   ))}
-                  <th className="border px-2 py-1 bg-gray-100 text-gray-700 font-semibold">Type</th>
+                  <th className="border px-3 py-2 bg-gray-100 text-gray-700 font-semibold">Type</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,11 +45,11 @@ function ExportPreview({ previewRows, getRowType, headers }) {
                   let badgeClass = ''
                   let rowBg = ''
                   if (type === 'new') {
-                    badgeClass = 'bg-green-100 text-green-800 border-green-300'
-                    rowBg = 'bg-green-50'
+                    badgeClass = 'bg-teal-100 text-teal-800 border-teal-300'
+                    rowBg = 'bg-teal-50'
                   } else if (type === 'changed') {
-                    badgeClass = 'bg-yellow-100 text-yellow-800 border-yellow-300'
-                    rowBg = 'bg-yellow-50'
+                    badgeClass = 'bg-pink-100 text-pink-800 border-pink-300'
+                    rowBg = 'bg-pink-50'
                   } else if (type === 'unchanged') {
                     badgeClass = 'bg-gray-100 text-gray-700 border-gray-300'
                     rowBg = 'bg-gray-50'
@@ -57,10 +57,10 @@ function ExportPreview({ previewRows, getRowType, headers }) {
                   return (
                     <tr key={i} className={i % 2 === 0 ? rowBg : ''}>
                       {row.map((cell, j) => (
-                        <td key={j} className="border px-2 py-1">{cell}</td>
+                        <td key={j} className="border px-3 py-2">{cell}</td>
                       ))}
-                      <td className={`border px-2 py-1 text-center`}>
-                        <span className={`inline-block px-2 py-0.5 rounded text-xs border ${badgeClass}`}>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
+                      <td className={`border px-3 py-2 text-center`}>
+                        <span className={`inline-block px-3 py-1 rounded-full text-xs border font-semibold shadow-sm ${badgeClass}`}>{type.charAt(0).toUpperCase() + type.slice(1)}</span>
                       </td>
                     </tr>
                   )
