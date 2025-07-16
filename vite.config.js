@@ -10,6 +10,19 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          xlsx: ['xlsx'],
+          ui: ['lucide-react', 'react-dropzone']
+        }
+      }
+    }
+  },
+  preview: {
+    port: 4173,
+    host: true
   }
 }) 

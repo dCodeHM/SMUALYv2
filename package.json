@@ -2,6 +2,7 @@
   "name": "excel-comparison-tool",
   "version": "1.0.0",
   "description": "A web application to compare Excel data between old and new datasets",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
